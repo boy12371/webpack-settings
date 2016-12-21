@@ -1,7 +1,8 @@
-*.sublime-workspace
 *.DS_Store
 *.idea
+*.lock
 *.log
+*.sublime-workspace
 build
 dist
 lib
