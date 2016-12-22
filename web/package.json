@@ -1,7 +1,8 @@
 {
   "name": "ctrine-webpack-settings-web",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Common webpack settings for building websites.",
+  "main": "src",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ctrine/webpack-settings.git"
@@ -25,8 +26,7 @@
     "url": "https://github.com/ctrine/webpack-settings/issues"
   },
   "homepage": "http://www.ctrine.com/#/webpack-settings",
-  "main": "./src",
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
     "babel-polyfill": "^6.16.0",
