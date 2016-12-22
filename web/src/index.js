@@ -13,26 +13,58 @@
 let HtmlPlugin = require('html-webpack-plugin')
 let path = require('path')
 
+/**
+ * Actual project being built with webpack.
+ */
+const PROJECT_DIR = path.dirname(module.parent.filename)
+
+/**
+ * Directory where the bundles will reside.
+ */
+const BUILD_DIR = path.join(PROJECT_DIR, 'build')
+
+/**
+ * Paths used to search for modules and project’s files.
+ */
+const MODULE_PATHS = [
+  path.join(__dirname, '..', 'node_modules'),
+  path.join(PROJECT_DIR, 'node_modules'),
+  './node_modules',
+  './src'
+]
+
+/**
+ * Actual webpack settings.
+ */
 module.exports = {
   resolve: {
-    modules: [
-      path.join(__dirname, 'node_modules'),
-      './node_modules',
-      './src'
+    modules: MODULE_PATHS,
+    extensions: [
+      '.css',
+      '.mcss',
+      '.msass',
+      '.mscss',
+      '.js',
+      '.jsx',
+      '.sass',
+      '.scss'
     ],
-    extensions: ['.css', '.gcss', '.gsass', '.gscss', '.js', '.scss']
+  },
+  resolveLoader: {
+    modules: MODULE_PATHS,
+    moduleExtensions: ['-loader']
   },
   entry: [
     'babel-polyfill',
     'main'
   ],
   output: {
-    path: path.join(__dirname, 'build'),
+    path: BUILD_DIR,
     filename: 'script.js?[hash:8]'
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: './build',
+    contentBase: BUILD_DIR,
     historyApiFallback: true,
     port: 3000
   },
@@ -49,7 +81,7 @@ module.exports = {
   },
   plugins: [
     new HtmlPlugin({
-      template: './src/index.html'
+      template: path.join(PROJECT_DIR, 'src', 'index.html')
     })
   ]
 }
