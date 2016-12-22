@@ -10,10 +10,10 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-export default {
+module.exports =  {
   test: /\.html$/,
   use: [{
-    loader: 'html-loader',
+    loader: 'html',
     options: {
       attrs: ['img:src', 'link:href']
     }

@@ -12,22 +12,22 @@
 
 let isDev = require('isdev')
 
-export default {
-  test: /\.css$/,
+module.exports =  {
+  test: /\.mcss$/,
   use: [{
-    loader: 'style-loader',
+    loader: 'style',
     options: {
       sourceMap: isDev
     }
   },{
-    loader: 'css-loader',
+    loader: 'css',
     options: {
       localIdentName: '[hash:8]-[name]-[local]',
       modules: true,
       sourceMap: isDev
     }
   },{
-    loader: 'postcss-loader',
+    loader: 'postcss',
     options: {
       sourceMap: isDev
     }

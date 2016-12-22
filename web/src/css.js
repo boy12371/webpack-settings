@@ -12,20 +12,20 @@
 
 let isDev = require('isdev')
 
-export default {
-  test: /\.gcss$/,
+module.exports =  {
+  test: /\.css$/,
   use: [{
-    loader: 'style-loader',
+    loader: 'style',
     options: {
       sourceMap: isDev
     }
   },{
-    loader: 'css-loader',
+    loader: 'css',
     options: {
       sourceMap: isDev
     }
   },{
-    loader: 'postcss-loader',
+    loader: 'postcss',
     options: {
       sourceMap: isDev
     }

@@ -12,27 +12,27 @@
 
 let isDev = require('isdev')
 
-export default {
-  test: /\.s[ac]ss$/,
+module.exports =  {
+  test: /\.ms[ac]ss$/,
   use: [{
-    loader: 'style-loader',
+    loader: 'style',
     options: {
       sourceMap: isDev
     }
   },{
-    loader: 'css-loader',
+    loader: 'css',
     options: {
       localIdentName: '[hash:8]-[name]-[local]',
       modules: true,
       sourceMap: isDev
     }
   },{
-    loader: 'postcss-loader',
+    loader: 'postcss',
     options: {
       sourceMap: isDev
     }
   },{
-    loader: 'sass-loader',
+    loader: 'sass',
     options: {
       sourceMap: isDev,
       includePaths: ['./src']
