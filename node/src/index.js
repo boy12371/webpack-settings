@@ -60,6 +60,7 @@ module.exports = {
   },
   entry: [
     'babel-polyfill',
+    'source-map-support',
     'main'
   ],
   output: {
