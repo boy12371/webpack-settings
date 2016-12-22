@@ -10,24 +10,24 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-let isDev = require('isdev')
+const IS_DEV = require('isdev')
 
 module.exports =  {
   test: /\.css$/,
   use: [{
     loader: 'style',
     options: {
-      sourceMap: isDev
+      sourceMap: IS_DEV
     }
   },{
     loader: 'css',
     options: {
-      sourceMap: isDev
+      sourceMap: IS_DEV
     }
   },{
     loader: 'postcss',
     options: {
-      sourceMap: isDev
+      sourceMap: IS_DEV
     }
   }]
 }

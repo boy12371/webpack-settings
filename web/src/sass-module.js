@@ -10,32 +10,34 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-let isDev = require('isdev')
+const IS_DEV = require('isdev')
 
-module.exports =  {
-  test: /\.ms[ac]ss$/,
-  use: [{
-    loader: 'style',
-    options: {
-      sourceMap: isDev
-    }
-  },{
-    loader: 'css',
-    options: {
-      localIdentName: '[hash:8]-[name]-[local]',
-      modules: true,
-      sourceMap: isDev
-    }
-  },{
-    loader: 'postcss',
-    options: {
-      sourceMap: isDev
-    }
-  },{
-    loader: 'sass',
-    options: {
-      sourceMap: isDev,
-      includePaths: ['./src']
-    }
-  }]
+module.exports = function(MODULE_PATHS) {
+  return {
+    test: /\.ms[ac]ss$/,
+    use: [{
+      loader: 'style',
+      options: {
+        sourceMap: IS_DEV
+      }
+    },{
+      loader: 'css',
+      options: {
+        localIdentName: '[hash:8]-[name]-[local]',
+        modules: true,
+        sourceMap: IS_DEV
+      }
+    },{
+      loader: 'postcss',
+      options: {
+        sourceMap: IS_DEV
+      }
+    },{
+      loader: 'sass',
+      options: {
+        sourceMap: IS_DEV,
+        includePaths: MODULE_PATHS
+      }
+    }]
+  }
 }

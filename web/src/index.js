@@ -13,6 +13,8 @@
 let HtmlPlugin = require('html-webpack-plugin')
 let path = require('path')
 
+const IS_DEV = require('isdev')
+
 /**
  * Actual project being built with webpack.
  */
@@ -29,6 +31,7 @@ const BUILD_DIR = path.join(PROJECT_DIR, 'build')
 const MODULE_PATHS = [
   path.join(__dirname, '..', 'node_modules'),
   path.join(PROJECT_DIR, 'node_modules'),
+  path.join(PROJECT_DIR, 'src'),
   './node_modules',
   './src'
 ]
@@ -68,6 +71,9 @@ module.exports = {
     historyApiFallback: true,
     port: 3000
   },
+  performance: {
+    hints: IS_DEV ? false : 'warning'
+  },
   module: {
     rules: [
       require('./asset'),
@@ -75,8 +81,8 @@ module.exports = {
       require('./css'),
       require('./html'),
       require('./js'),
-      require('./sass-module'),
-      require('./sass')
+      require('./sass-module')(MODULE_PATHS),
+      require('./sass')(MODULE_PATHS)
     ]
   },
   plugins: [
