@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-web",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Common webpack settings for building websites.",
   "main": "src",
   "repository": {
@@ -27,9 +27,9 @@
   },
   "homepage": "http://www.ctrine.com/#/webpack-settings",
   "dependencies": {
-    "ctrine-preset-web-dev": "^0.1.2"
+    "ctrine-preset-web-dev": "^0.1.5"
   },
   "peerDependencies": {
-    "ctrine-preset-web": "^0.1.2"
+    "ctrine-preset-web": "^0.1.5"
   }
 }
