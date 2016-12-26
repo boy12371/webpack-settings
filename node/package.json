@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-node",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Common webpack settings for building node apps.",
   "main": "src",
   "repository": {
@@ -9,18 +9,17 @@
   },
   "keywords": [
     "ctrine",
-    "react",
+    "node",
     "settings",
-    "toolkit",
-    "ui",
-    "web",
     "webpack"
   ],
-  "author": [{
-    "name": "Alexandre Borela",
-    "email": "alexandre@borela.tech",
-    "url": "http://www.borela.tech"
-  }],
+  "author": [
+    {
+      "name": "Alexandre Borela",
+      "email": "alexandre@borela.tech",
+      "url": "http://www.borela.tech"
+    }
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/ctrine/webpack-settings/issues"
