@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-node",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "description": "Common webpack settings for building ctrine node apps.",
   "main": "src",
   "repository": {
@@ -26,9 +26,9 @@
   },
   "homepage": "http://www.ctrine.com/#/webpack-settings",
   "dependencies": {
-    "ctrine-preset-node-dev": "^0.1.5"
+    "ctrine-preset-node-dev": "^1.0.0"
   },
   "peerDependencies": {
-    "ctrine-preset-node": "^0.1.5"
+    "ctrine-preset-node": "^1.0.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-cli",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Common webpack settings for building ctrine cli apps.",
   "main": "src",
   "repository": {
@@ -26,9 +26,9 @@
   },
   "homepage": "http://www.ctrine.com/#/webpack-settings",
   "dependencies": {
-    "ctrine-preset-cli-dev": "^0.1.0"
+    "ctrine-preset-cli-dev": "^1.0.0"
   },
   "peerDependencies": {
-    "ctrine-preset-cli": "^0.1.0"
+    "ctrine-preset-cli": "^1.0.0"
   }
 }
