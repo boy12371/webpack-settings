@@ -10,10 +10,10 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
+const IS_DEV = require('isdev')
 let HtmlPlugin = require('html-webpack-plugin')
 let path = require('path')
-
-const IS_DEV = require('isdev')
+let webpack = require('webpack')
 
 /**
  * Actual project being built with webpack.
@@ -35,6 +35,25 @@ const MODULE_PATHS = [
   './node_modules',
   './src'
 ]
+
+/**
+ * Various plugins used during development and production.
+ */
+let plugins = []
+
+plugins.push(
+  new HtmlPlugin({
+    template: path.join(PROJECT_DIR, 'src', 'index.html')
+  })
+)
+
+if (!IS_DEV) {
+  plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      comments: false
+    })
+  )
+}
 
 /**
  * Actual webpack settings.
@@ -85,9 +104,5 @@ module.exports = {
       require('./sass')(MODULE_PATHS)
     ]
   },
-  plugins: [
-    new HtmlPlugin({
-      template: path.join(PROJECT_DIR, 'src', 'index.html')
-    })
-  ]
+  plugins
 }

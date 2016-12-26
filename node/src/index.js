@@ -10,11 +10,10 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
+const IS_DEV = require('isdev')
 let nodeExternals = require('webpack-node-externals')
 let path = require('path')
 let webpack = require('webpack')
-
-const IS_DEV = require('isdev')
 
 /**
  * Actual project being built with webpack.
@@ -36,6 +35,26 @@ const MODULE_PATHS = [
   './node_modules',
   './src'
 ]
+/**
+ * Various plugins used during development and production.
+ */
+let plugins = []
+
+plugins.push(
+  new webpack.BannerPlugin({
+    banner: 'require("source-map-support/register");',
+    entryOnly: false,
+    raw: true
+  })
+)
+
+if (!IS_DEV) {
+  plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      comments: false
+    })
+  )
+}
 
 /**
  * Actual webpack settings.
@@ -65,7 +84,7 @@ module.exports = {
   ],
   output: {
     path: BUILD_DIR,
-    filename: 'index.js?[hash:8]'
+    filename: 'index.js'
   },
   target: 'node',
   node: {
@@ -74,11 +93,6 @@ module.exports = {
   },
   externals: [nodeExternals()],
   devtool: 'source-map',
-  devServer: {
-    contentBase: BUILD_DIR,
-    historyApiFallback: true,
-    port: 3000
-  },
   performance: {
     hints: IS_DEV ? false : 'warning'
   },
@@ -93,11 +107,5 @@ module.exports = {
       require('./sass')(MODULE_PATHS)
     ]
   },
-  plugins: [
-    new webpack.BannerPlugin({
-      banner: 'require("source-map-support/register");',
-      entryOnly: false,
-      raw: true
-    })
-  ]
+  plugins
 }

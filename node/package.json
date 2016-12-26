@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-node",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Common webpack settings for building node apps.",
   "main": "src",
   "repository": {
