@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common webpack settings for building ctrine cli apps.",
   "main": "src",
   "repository": {

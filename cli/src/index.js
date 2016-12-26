@@ -42,7 +42,7 @@ let plugins = []
 
 plugins.push(
   new webpack.BannerPlugin({
-    banner: 'require("source-map-support/register");',
+    banner: '#!/usr/bin/env node\nrequire("source-map-support/register");',
     entryOnly: false,
     raw: true
   })
