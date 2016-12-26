@@ -1,0 +1,34 @@
+{
+  "name": "ctrine-webpack-settings-cli",
+  "version": "0.1.0",
+  "description": "Common webpack settings for building cli apps.",
+  "main": "src",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrine/webpack-settings.git"
+  },
+  "keywords": [
+    "ctrine",
+    "cli",
+    "settings",
+    "webpack"
+  ],
+  "author": [
+    {
+      "name": "Alexandre Borela",
+      "email": "alexandre@borela.tech",
+      "url": "http://www.borela.tech"
+    }
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ctrine/webpack-settings/issues"
+  },
+  "homepage": "http://www.ctrine.com/#/webpack-settings",
+  "dependencies": {
+    "ctrine-preset-cli-dev": "^0.1.0"
+  },
+  "peerDependencies": {
+    "ctrine-preset-cli": "^0.1.0"
+  }
+}
