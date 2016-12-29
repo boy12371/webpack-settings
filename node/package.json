@@ -1,34 +1,41 @@
 {
   "name": "ctrine-webpack-settings-node",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Common webpack settings for building ctrine node apps.",
-  "main": "src",
+  "license": "Apache-2.0",
+  "main": "build",
+  "scripts": {
+    "clean": "rimraf \"build/!(.git)\"",
+    "build": "npm run clean && run-p build:*",
+    "build:shared": "cpx \"../shared/**/*\" build/shared",
+    "build:target": "cpx \"./src/**/*\" build",
+    "dev": "npm run clean && run-p dev:*",
+    "dev:shared": "cpx \"../shared/**/*\" build/shared --watch",
+    "dev:target": "cpx \"./src/**/*\" build --watch",
+    "start": "npm run dev"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ctrine/webpack-settings.git"
   },
+  "bugs": {
+    "url": "https://github.com/ctrine/webpack-settings/issues"
+  },
+  "homepage": "http://www.ctrine.com/#/webpack-settings",
   "keywords": [
     "ctrine",
     "node",
     "settings",
     "webpack"
   ],
-  "author": [
-    {
-      "name": "Alexandre Borela",
-      "email": "alexandre@borela.tech",
-      "url": "http://www.borela.tech"
-    }
-  ],
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/ctrine/webpack-settings/issues"
+  "author": {
+    "name": "Alexandre Borela",
+    "email": "alexandre@borela.tech",
+    "url": "http://www.borela.tech"
   },
-  "homepage": "http://www.ctrine.com/#/webpack-settings",
   "dependencies": {
-    "ctrine-preset-node-dev": "^1.0.0"
-  },
-  "peerDependencies": {
-    "ctrine-preset-node": "^1.0.0"
+    "ctrine-dev-preset": "^1.0.0",
+    "webpack-node-externals": "^1.5.4",
+    "source-map-support": "^0.4.6"
   }
 }
