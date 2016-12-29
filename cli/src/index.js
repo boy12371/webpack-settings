@@ -22,7 +22,6 @@ let createBasicSettings = require('./shared')
 // project so that we can determine the project’s directory.
 const PROJECT_DIR = path.dirname(module.parent.filename)
 
-// Settings skeleton.
 let settings = createBasicSettings(PROJECT_DIR)
 
 settings.entry.push('main')
@@ -61,5 +60,4 @@ if (!IS_DEV) {
   )
 }
 
-// The final settings tweaked for web apps.
 module.exports = settings
