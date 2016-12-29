@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Common webpack settings for building ctrine cli apps.",
   "license": "Apache-2.0",
   "main": "build",
@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "ctrine-dev-preset": "^1.0.0",
+    "webpack-node-externals": "^1.5.4",
     "source-map-support": "^0.4.6"
   }
 }

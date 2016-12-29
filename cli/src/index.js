@@ -12,6 +12,7 @@
 
 const IS_DEV = require('isdev')
 let HtmlPlugin = require('html-webpack-plugin')
+let nodeExternals = require('webpack-node-externals')
 let path = require('path')
 let webpack = require('webpack')
 
@@ -24,11 +25,15 @@ const PROJECT_DIR = path.dirname(module.parent.filename)
 // Settings skeleton.
 let settings = createBasicSettings(PROJECT_DIR)
 
+settings.entry.push('main')
 settings.output.filename = 'index.js'
-settings.entry = [
-  'babel-polyfill',
-  'main'
-]
+
+settings.target = 'node'
+settings.externals.push(nodeExternals())
+settings.node = {
+  __dirname: false,
+  __filename: false
+}
 
 if (IS_DEV) {
   settings.plugins.push(

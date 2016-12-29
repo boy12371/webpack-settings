@@ -59,9 +59,11 @@ module.exports = projectDir => {
     resolveLoader: {
       modules: MODULE_PATHS
     },
+    entry: [],
     output: {
       path: BUILD_DIR
     },
+    externals: [],
     devtool: 'source-map',
     devServer: {
       contentBase: BUILD_DIR,
@@ -69,7 +71,7 @@ module.exports = projectDir => {
       port: 3000
     },
     performance: {
-      hints: IS_DEV ? false : 'warning'
+      hints: !IS_DEV
     },
     module: {
       rules: [
@@ -81,6 +83,7 @@ module.exports = projectDir => {
         sassModuleRule(MODULE_PATHS),
         sassRule(MODULE_PATHS)
       ]
-    }
+    },
+    plugins: []
   }
 }
