@@ -11,101 +11,50 @@
 // the License.
 
 const IS_DEV = require('isdev')
-let nodeExternals = require('webpack-node-externals')
+let HtmlPlugin = require('html-webpack-plugin')
 let path = require('path')
 let webpack = require('webpack')
 
-/**
- * Actual project being built with webpack.
- */
+let createBasicSettings = require('./shared')
+
+// The parent script must be the actual webpack config file at the root of the
+// project so that we can determine the project’s directory.
 const PROJECT_DIR = path.dirname(module.parent.filename)
 
-/**
- * Directory where the bundles will reside.
- */
-const BUILD_DIR = path.join(PROJECT_DIR, 'build')
+// Settings skeleton.
+let settings = createBasicSettings(PROJECT_DIR)
 
-/**
- * Paths used to search for modules and project’s files.
- */
-const MODULE_PATHS = [
-  path.join(__dirname, '..', 'node_modules'),
-  path.join(PROJECT_DIR, 'node_modules'),
-  path.join(PROJECT_DIR, 'src'),
-  './node_modules',
-  './src'
+settings.output.filename = 'index.js'
+settings.entry = [
+  'babel-polyfill',
+  'main'
 ]
-/**
- * Various plugins used during development and production.
- */
-let plugins = []
 
-plugins.push(
+if (IS_DEV) {
+  settings.plugins.push(
+    new webpack.BannerPlugin({
+      banner: 'require("source-map-support/register");',
+      entryOnly: false,
+      raw: true
+    })
+  )
+}
+
+settings.plugins.push(
   new webpack.BannerPlugin({
-    banner: '#!/usr/bin/env node\nrequire("source-map-support/register");',
+    banner: '#!/usr/bin/env node',
     entryOnly: false,
     raw: true
   })
 )
 
 if (!IS_DEV) {
-  plugins.push(
+  settings.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       comments: false
     })
   )
 }
 
-/**
- * Actual webpack settings.
- */
-module.exports = {
-  resolve: {
-    modules: MODULE_PATHS,
-    extensions: [
-      '.css',
-      '.mcss',
-      '.msass',
-      '.mscss',
-      '.js',
-      '.jsx',
-      '.sass',
-      '.scss'
-    ],
-  },
-  resolveLoader: {
-    modules: MODULE_PATHS,
-    moduleExtensions: ['-loader']
-  },
-  entry: [
-    'babel-polyfill',
-    'source-map-support',
-    'main'
-  ],
-  output: {
-    path: BUILD_DIR,
-    filename: 'index.js'
-  },
-  target: 'node',
-  node: {
-    __dirname: false,
-    __filename: false
-  },
-  externals: [nodeExternals()],
-  devtool: 'source-map',
-  performance: {
-    hints: IS_DEV ? false : 'warning'
-  },
-  module: {
-    rules: [
-      require('./asset'),
-      require('./css-module'),
-      require('./css'),
-      require('./html'),
-      require('./js'),
-      require('./sass-module')(MODULE_PATHS),
-      require('./sass')(MODULE_PATHS)
-    ]
-  },
-  plugins
-}
+// The final settings tweaked for web apps.
+module.exports = settings
