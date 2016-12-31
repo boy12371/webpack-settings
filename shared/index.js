@@ -21,9 +21,6 @@ let jsRule = require('./rules/js')
 let sassModuleRule = require('./rules/sass-module')
 let sassRule = require('./rules/sass')
 
-/**
- * Create common settings.
- */
 module.exports = projectDir => {
   // Location of the final settings creator.
   const SETTINGS_DIR = path.dirname(module.parent.filename)
@@ -50,7 +47,9 @@ module.exports = projectDir => {
         '.mcss',
         '.msass',
         '.mscss',
+        '.html',
         '.js',
+        '.json',
         '.jsx',
         '.sass',
         '.scss'
