@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-cli",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Common webpack settings for building ctrine cli apps.",
   "license": "Apache-2.0",
   "main": "build",
@@ -34,7 +34,7 @@
     "url": "http://www.borela.tech"
   },
   "dependencies": {
-    "ctrine-dev-preset": "^1.0.0",
+    "ctrine-dev-preset": "^1.1.0",
     "webpack-node-externals": "^1.5.4",
     "source-map-support": "^0.4.6"
   }
