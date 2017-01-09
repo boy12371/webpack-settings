@@ -22,19 +22,23 @@ let createBasicSettings = require('./shared')
 // project so that we can determine the project’s directory.
 const PROJECT_DIR = path.dirname(module.parent.filename)
 
+// Settings skeleton.
 let settings = createBasicSettings(PROJECT_DIR)
 
-settings.entry.push('main')
-settings.output.filename = 'index.js'
-
 settings.target = 'node'
+
+// Excluding all external modules from the bundle as it really doesn't make sense
+// to bundle them if the script is being executed with NodeJS.
 settings.externals.push(nodeExternals())
+
+// Disable polyfills.
 settings.node = {
   __dirname: false,
   __filename: false
 }
 
 if (IS_DEV) {
+  // Adds source map support for exceptions.
   settings.plugins.push(
     new webpack.BannerPlugin({
       banner: 'require("source-map-support/register");',
@@ -44,6 +48,7 @@ if (IS_DEV) {
   )
 }
 
+// Makes the script executable.
 settings.plugins.push(
   new webpack.BannerPlugin({
     banner: '#!/usr/bin/env node',
@@ -53,6 +58,7 @@ settings.plugins.push(
 )
 
 if (!IS_DEV) {
+  // Compress and remove comments.
   settings.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       comments: false

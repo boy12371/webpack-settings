@@ -24,11 +24,17 @@ const PROJECT_DIR = path.dirname(module.parent.filename)
 // Settings skeleton.
 let settings = createBasicSettings(PROJECT_DIR)
 
-settings.entry.push('babel-polyfill')
-settings.entry.push('main')
+settings.target = 'web'
+
+// The polyfill must appear before the entry point.
+settings.entry.unshit('babel-polyfill')
 
 // The hash in the end is used by HtmlPlugin.
 settings.output.filename = 'script.js?[hash:8]'
+
+// The web settings is used to create websites and having something that looks
+// like a real address will make the process easier.
+settings.devServer.host = 'www.localhost.com'
 
 // Main entry point to the single page app.
 settings.plugins.push(

@@ -58,16 +58,17 @@ module.exports = projectDir => {
     resolveLoader: {
       modules: MODULE_PATHS
     },
-    entry: [],
+    entry: ['main'],
     output: {
-      path: BUILD_DIR
+      path: BUILD_DIR,
+      filename: 'index.js'
     },
     externals: [],
     devtool: 'source-map',
     devServer: {
       contentBase: BUILD_DIR,
       historyApiFallback: true,
-      port: 3000
+      port: 80
     },
     performance: {
       hints: !IS_DEV

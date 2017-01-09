@@ -22,19 +22,27 @@ let createBasicSettings = require('./shared')
 // project so that we can determine the project’s directory.
 const PROJECT_DIR = path.dirname(module.parent.filename)
 
+// Settings skeleton.
 let settings = createBasicSettings(PROJECT_DIR)
 
-settings.entry.push('main')
-settings.output.filename = 'index.js'
-
 settings.target = 'node'
+
+// Excluding all external modules from the bundle as it really doesn't make sense
+// to bundle them if the script is being executed with NodeJS.
 settings.externals.push(nodeExternals())
+
+// Disable polyfills.
 settings.node = {
   __dirname: false,
   __filename: false
 }
 
+// The node settings is used to create node apps which in most cases will be API
+// servers, having a dedicated domain for them will ease the development.
+settings.devServer.host = 'system.localhost.com'
+
 if (IS_DEV) {
+  // Adds source map support for exceptions.
   settings.plugins.push(
     new webpack.BannerPlugin({
       banner: 'require("source-map-support/register");',
@@ -45,6 +53,7 @@ if (IS_DEV) {
 }
 
 if (!IS_DEV) {
+  // Compress and remove comments.
   settings.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       comments: false
