@@ -68,7 +68,7 @@ module.exports = projectDir => {
     devServer: {
       contentBase: BUILD_DIR,
       historyApiFallback: true,
-      port: 80
+      port: 3000
     },
     performance: {
       hints: !IS_DEV
