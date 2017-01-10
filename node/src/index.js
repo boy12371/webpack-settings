@@ -37,10 +37,6 @@ settings.node = {
   __filename: false
 }
 
-// The node settings is used to create node apps which in most cases will be API
-// servers, having a dedicated domain for them will ease the development.
-settings.devServer.host = 'system.localhost.com'
-
 if (IS_DEV) {
   // Adds source map support for exceptions.
   settings.plugins.push(

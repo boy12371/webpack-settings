@@ -32,10 +32,6 @@ settings.entry.unshift('babel-polyfill')
 // The hash in the end is used by HtmlPlugin.
 settings.output.filename = 'script.js?[hash:8]'
 
-// The web settings is used to create websites and having something that looks
-// like a real address will make the process easier.
-settings.devServer.host = 'www.localhost.com'
-
 // Main entry point to the single page app.
 settings.plugins.push(
   new HtmlPlugin({
