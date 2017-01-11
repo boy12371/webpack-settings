@@ -34,8 +34,6 @@
     "url": "http://www.borela.tech"
   },
   "dependencies": {
-    "ctrine-dev-preset": "^1.4.0",
-    "webpack-node-externals": "^1.5.4",
-    "source-map-support": "^0.4.6"
+    "ctrine-dev-preset": "^1.4.0"
   }
 }
