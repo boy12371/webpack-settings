@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-web",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Common webpack settings for building ctrine web apps.",
   "license": "Apache-2.0",
   "main": "build",
