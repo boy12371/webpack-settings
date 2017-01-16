@@ -26,9 +26,6 @@ let settings = createBasicSettings(PROJECT_DIR)
 
 settings.target = 'web'
 
-// The polyfill must appear before the entry point.
-settings.entry.unshift('babel-polyfill')
-
 // The hash in the end is used by HtmlPlugin.
 settings.output.filename = 'script.js?[hash:8]'
 

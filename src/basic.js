@@ -60,7 +60,10 @@ module.exports = projectDir => {
     resolveLoader: {
       modules: MODULE_PATHS
     },
-    entry: ['main'],
+    entry: [
+      'babel-polyfill',
+      'main'
+    ],
     output: {
       path: BUILD_DIR,
       filename: 'index.js'
