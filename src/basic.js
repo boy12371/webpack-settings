@@ -30,6 +30,8 @@ module.exports = projectDir => {
 
   // Paths used to search for modules and project’s files.
   const MODULE_PATHS = [
+    // Some dependencies might be installed inside the settings directory, this
+    // is useful when changes are made to this project locally.
     path.join(SETTINGS_DIR, '..', 'node_modules'),
     // Lookup directories.
     path.join(projectDir, 'node_modules'),

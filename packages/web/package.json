@@ -1,16 +1,16 @@
 {
   "name": "ctrine-webpack-settings-web",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "description": "Common webpack settings for building ctrine web apps.",
   "license": "Apache-2.0",
   "main": "build",
   "scripts": {
     "clean": "rimraf \"build/!(.git)\"",
     "build": "npm run clean && run-p build:*",
-    "build:shared": "cpx \"../shared/**/*\" build/shared",
+    "build:shared": "cpx \"../../src/**/*\" build",
     "build:target": "cpx \"./src/**/*\" build",
     "dev": "npm run clean && run-p dev:*",
-    "dev:shared": "cpx \"../shared/**/*\" build/shared --watch",
+    "dev:shared": "cpx \"../../src/**/*\" build --watch",
     "dev:target": "cpx \"./src/**/*\" build --watch",
     "start": "npm run dev"
   },

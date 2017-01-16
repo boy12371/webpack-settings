@@ -12,10 +12,11 @@
 
 const IS_DEV = require('isdev')
 let HtmlPlugin = require('html-webpack-plugin')
+let nodeExternals = require('webpack-node-externals')
 let path = require('path')
 let webpack = require('webpack')
 
-let createBasicSettings = require('./shared')
+let createBasicSettings = require('./basic')
 
 // The parent script must be the actual webpack config file at the root of the
 // project so that we can determine the project’s directory.
@@ -24,22 +25,31 @@ const PROJECT_DIR = path.dirname(module.parent.filename)
 // Settings skeleton.
 let settings = createBasicSettings(PROJECT_DIR)
 
-settings.target = 'web'
+settings.target = 'node'
 
-// The polyfill must appear before the entry point.
-settings.entry.unshift('babel-polyfill')
+// Excluding all external modules from the bundle as it really doesn't make sense
+// to bundle them if the script is being executed with NodeJS.
+settings.externals.push(nodeExternals())
 
-// The hash in the end is used by HtmlPlugin.
-settings.output.filename = 'script.js?[hash:8]'
+// Disable polyfills.
+settings.node = {
+  __dirname: false,
+  __filename: false
+}
 
-// Main entry point to the single page app.
-settings.plugins.push(
-  new HtmlPlugin({
-    template: path.join(PROJECT_DIR, 'src', 'index.html')
-  })
-)
+if (IS_DEV) {
+  // Adds source map support for exceptions.
+  settings.plugins.push(
+    new webpack.BannerPlugin({
+      banner: 'require("source-map-support/register");',
+      entryOnly: false,
+      raw: true
+    })
+  )
+}
 
 if (!IS_DEV) {
+  // Compress and remove comments.
   settings.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       comments: false
@@ -47,5 +57,4 @@ if (!IS_DEV) {
   )
 }
 
-// The final settings tweaked for web apps.
 module.exports = settings
