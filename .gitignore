@@ -4,6 +4,4 @@
 *.log
 *.sublime-workspace
 build
-dist
-lib
 node_modules
