@@ -18,6 +18,7 @@ let cssModuleRule = require('./rules/css-module')
 let cssRule = require('./rules/css')
 let htmlRule = require('./rules/html')
 let jsRule = require('./rules/js')
+let rawRule = require('./rules/raw')
 let sassModuleRule = require('./rules/sass-module')
 let sassRule = require('./rules/sass')
 
@@ -85,6 +86,7 @@ module.exports = projectDir => {
         cssRule,
         htmlRule,
         jsRule,
+        rawRule,
         sassModuleRule(MODULE_PATHS),
         sassRule(MODULE_PATHS)
       ]
