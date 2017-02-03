@@ -1,7 +1,7 @@
 {
   "name": "ctrine-webpack-settings-cli",
   "version": "3.3.0",
-  "description": "Common webpack settings for building ctrine cli apps.",
+  "description": "Common webpack settings for building Ctrine cli apps.",
   "license": "Apache-2.0",
   "main": "build",
   "scripts": {
