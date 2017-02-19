@@ -12,6 +12,7 @@
 
 const IS_DEV = require('isdev')
 let path = require('path')
+let webpack = require('webpack')
 
 let assetRule = require('./rules/asset')
 let cssModuleRule = require('./rules/css-module')
@@ -91,6 +92,8 @@ module.exports = projectDir => {
         sassRule(MODULE_PATHS)
       ]
     },
-    plugins: []
+    plugins: [
+      new webpack.NamedModulesPlugin()
+    ]
   }
 }
