@@ -1,7 +1,7 @@
 {
   "name": "ctrine-webpack-settings-node",
-  "version": "3.3.0",
-  "description": "Common webpack settings for building Ctrine node apps.",
+  "version": "3.4.0",
+  "description": "Common webpack settings for building node apps.",
   "license": "Apache-2.0",
   "main": "build",
   "scripts": {
