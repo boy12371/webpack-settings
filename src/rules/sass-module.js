@@ -22,7 +22,7 @@ module.exports = modulePaths => ({
   },{
     loader: 'css-loader',
     options: {
-      localIdentName: '[hash:8]-[name]-[local]',
+      localIdentName: '[hash:base64]-[name]-[local]',
       modules: true,
       sourceMap: IS_DEV
     }
