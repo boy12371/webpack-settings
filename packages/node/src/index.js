@@ -11,7 +11,6 @@
 // the License.
 
 const IS_DEV = require('isdev')
-let HtmlPlugin = require('html-webpack-plugin')
 let nodeExternals = require('webpack-node-externals')
 let path = require('path')
 let webpack = require('webpack')

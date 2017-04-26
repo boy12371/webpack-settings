@@ -52,42 +52,17 @@ module.exports = projectDir => {
 
   // Actual settings.
   return {
-    resolve: {
-      modules: MODULE_PATHS,
-      extensions: [
-        '.css',
-        '.mcss',
-        '.msass',
-        '.mscss',
-        '.html',
-        '.js',
-        '.json',
-        '.jsx',
-        '.sass',
-        '.scss'
-      ],
-    },
-    resolveLoader: {
-      modules: MODULE_PATHS
-    },
-    entry: [
-      'babel-polyfill',
-      'main'
-    ],
-    output: {
-      path: BUILD_DIR,
-      filename: 'index.js'
-    },
-    externals: [],
-    devtool: 'source-map',
     devServer: {
       contentBase: BUILD_DIR,
       historyApiFallback: true,
       port: 3000
     },
-    performance: {
-      hints: !IS_DEV
-    },
+    devtool: 'source-map',
+    entry: [
+      'babel-polyfill',
+      'main'
+    ],
+    externals: [],
     module: {
       rules: [
         assetRule,
@@ -104,6 +79,31 @@ module.exports = projectDir => {
         stylusRule
       ]
     },
-    plugins: [ ...DEV_PLUGINS ]
+    output: {
+      filename: 'index.js',
+      path: BUILD_DIR
+    },
+    performance: {
+      hints: !IS_DEV
+    },
+    plugins: [...DEV_PLUGINS],
+    resolve: {
+      extensions: [
+        '.css',
+        '.mcss',
+        '.msass',
+        '.mscss',
+        '.html',
+        '.js',
+        '.json',
+        '.jsx',
+        '.sass',
+        '.scss'
+      ],
+      modules: MODULE_PATHS
+    },
+    resolveLoader: {
+      modules: MODULE_PATHS
+    }
   }
 }

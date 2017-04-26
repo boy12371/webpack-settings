@@ -11,12 +11,10 @@
 // the License.
 
 module.exports = {
-  test: /\.(jpg|png|svg)$/,
   exclude: /node_modules/,
+  test: /\.(jpg|png|svg)$/,
   use: [{
     loader: 'url-loader',
-    options: {
-      limit: 0
-    }
+    options: { limit: 0 }
   }]
 }

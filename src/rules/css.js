@@ -16,18 +16,12 @@ module.exports = {
   test: /\.css$/,
   use: [{
     loader: 'style-loader',
-    options: {
-      sourceMap: IS_DEV
-    }
-  },{
+    options: { sourceMap: IS_DEV }
+  }, {
     loader: 'css-loader',
-    options: {
-      sourceMap: IS_DEV
-    }
-  },{
+    options: { sourceMap: IS_DEV }
+  }, {
     loader: 'postcss-loader',
-    options: {
-      sourceMap: IS_DEV
-    }
+    options: { sourceMap: IS_DEV }
   }]
 }

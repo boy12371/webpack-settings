@@ -16,24 +16,18 @@ module.exports = {
   test: /\.styl$/,
   use: [{
     loader: 'style-loader',
-    options: {
-      sourceMap: IS_DEV
-    }
-  },{
+    options: { sourceMap: IS_DEV }
+  }, {
     loader: 'css-loader',
-    options: {
-      sourceMap: IS_DEV
-    }
-  },{
+    options: { sourceMap: IS_DEV }
+  }, {
     loader: 'postcss-loader',
-    options: {
-      sourceMap: IS_DEV
-    }
-  },{
+    options: { sourceMap: IS_DEV }
+  }, {
     loader: 'stylus-loader',
     options: {
-      sourceMap: IS_DEV,
-      preferPathResolver: 'webpack'
+      preferPathResolver: 'webpack',
+      sourceMap: IS_DEV
     }
   }]
 }

@@ -15,7 +15,7 @@ module.exports = {
   use: [{
     loader: 'html-loader',
     options: {
-      attrs: ['img:src', 'link:href']
+      attrs: [ 'img:src', 'link:href' ]
     }
   }]
 }

@@ -11,8 +11,8 @@
 // the License.
 
 module.exports = {
-  test: /\.(pem|txt)$/,
   exclude: /node_modules/,
+  test: /\.(pem|txt)$/,
   use: [{
     loader: 'raw-loader'
   }]
