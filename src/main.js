@@ -103,7 +103,12 @@ module.exports = (projectDir, environment) => {
     node: {
       // Disable polyfills.
       __dirname: false,
-      __filename: false
+      __filename: false,
+      Buffer: false,
+      console: false,
+      global: false,
+      process: false,
+      setImmediate: false
     },
     output: {
       filename: 'index.js',
