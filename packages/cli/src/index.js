@@ -11,7 +11,6 @@
 // the License.
 
 const IS_DEV = require('isdev')
-let nodeExternals = require('webpack-node-externals')
 let path = require('path')
 let webpack = require('webpack')
 
@@ -22,30 +21,7 @@ let createBasicSettings = require('./main')
 const PROJECT_DIR = path.dirname(module.parent.filename)
 
 // Settings skeleton.
-let settings = createBasicSettings(PROJECT_DIR)
-
-settings.target = 'node'
-
-// Excluding all external modules from the bundle as it really doesn't make sense
-// to bundle them if the script is being executed with NodeJS.
-settings.externals.push(nodeExternals())
-
-// Disable polyfills.
-settings.node = {
-  __dirname: false,
-  __filename: false
-}
-
-if (IS_DEV) {
-  // Adds source map support for exceptions.
-  settings.plugins.push(
-    new webpack.BannerPlugin({
-      banner: 'require("source-map-support/register");',
-      entryOnly: false,
-      raw: true
-    })
-  )
-}
+let settings = createBasicSettings(PROJECT_DIR, 'node')
 
 // Makes the script executable.
 settings.plugins.push(

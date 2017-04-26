@@ -11,6 +11,7 @@
 // the License.
 
 const IS_DEV = require('isdev')
+let nodeExternals = require('webpack-node-externals')
 let path = require('path')
 let webpack = require('webpack')
 
@@ -27,7 +28,7 @@ let sassRule = require('./rules/sass')
 let stylusModuleRule = require('./rules/stylus-module')
 let stylusRule = require('./rules/stylus')
 
-module.exports = projectDir => {
+module.exports = (projectDir, environment) => {
   // Location of the final settings creator.
   const SETTINGS_DIR = path.dirname(module.parent.filename)
 
@@ -46,9 +47,29 @@ module.exports = projectDir => {
     'src'
   ]
 
-  const DEV_PLUGINS = !IS_DEV
-    ? []
-    : [new webpack.NamedModulesPlugin()]
+  // Plugins that will be used only during development.
+  const DEV_PLUGINS = IS_DEV
+    ? [new webpack.NamedModulesPlugin()]
+    : []
+
+
+  // Excluding all external modules from the bundle as it really doesn't make
+  // sense to bundle them if the script is being executed with NodeJS.
+  const NODE_EXTERNALS = environment === 'node'
+    ? nodeExternals()
+    : []
+
+  // Plugins used during development which are exclusive to node apps.
+  const NODE_DEV_PLUGINS = environment === 'node'
+    ? [
+      // Adds source map support for exceptions.
+      new webpack.BannerPlugin({
+        banner: 'require("source-map-support/register");',
+        entryOnly: false,
+        raw: true
+      })
+    ]
+    : []
 
   // Actual settings.
   return {
@@ -62,7 +83,7 @@ module.exports = projectDir => {
       'babel-polyfill',
       'main'
     ],
-    externals: [],
+    externals: [...NODE_EXTERNALS],
     module: {
       rules: [
         assetRule,
@@ -79,6 +100,11 @@ module.exports = projectDir => {
         stylusRule
       ]
     },
+    node: {
+      // Disable polyfills.
+      __dirname: false,
+      __filename: false
+    },
     output: {
       filename: 'index.js',
       path: BUILD_DIR
@@ -86,24 +112,32 @@ module.exports = projectDir => {
     performance: {
       hints: !IS_DEV
     },
-    plugins: [...DEV_PLUGINS],
+    plugins: [
+      ...DEV_PLUGINS,
+      ...NODE_DEV_PLUGINS
+    ],
     resolve: {
       extensions: [
         '.css',
-        '.mcss',
-        '.msass',
-        '.mscss',
         '.html',
         '.js',
         '.json',
         '.jsx',
+        '.less',
+        '.mcss',
+        '.mless',
+        '.msass',
+        '.mscss',
+        '.mstyl',
         '.sass',
-        '.scss'
+        '.scss',
+        '.styl'
       ],
       modules: MODULE_PATHS
     },
     resolveLoader: {
       modules: MODULE_PATHS
-    }
+    },
+    target: environment
   }
 }

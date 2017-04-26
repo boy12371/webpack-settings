@@ -22,9 +22,7 @@ let createBasicSettings = require('./main')
 const PROJECT_DIR = path.dirname(module.parent.filename)
 
 // Settings skeleton.
-let settings = createBasicSettings(PROJECT_DIR)
-
-settings.target = 'web'
+let settings = createBasicSettings(PROJECT_DIR, 'web')
 
 // The hash in the end is used by HtmlPlugin.
 settings.output.filename = 'script.js?[hash:8]'
@@ -37,6 +35,7 @@ settings.plugins.push(
 )
 
 if (!IS_DEV) {
+  // Compress and remove comments.
   settings.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       comments: false
