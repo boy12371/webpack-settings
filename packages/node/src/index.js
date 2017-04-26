@@ -16,7 +16,7 @@ let nodeExternals = require('webpack-node-externals')
 let path = require('path')
 let webpack = require('webpack')
 
-let createBasicSettings = require('./basic')
+let createBasicSettings = require('./main')
 
 // The parent script must be the actual webpack config file at the root of the
 // project so that we can determine the project’s directory.

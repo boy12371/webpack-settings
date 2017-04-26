@@ -19,9 +19,13 @@ let cssModuleRule = require('./rules/css-module')
 let cssRule = require('./rules/css')
 let htmlRule = require('./rules/html')
 let jsRule = require('./rules/js')
+let lessModuleRule = require('./rules/less-module')
+let lessRule = require('./rules/less')
 let rawRule = require('./rules/raw')
 let sassModuleRule = require('./rules/sass-module')
 let sassRule = require('./rules/sass')
+let stylusModuleRule = require('./rules/stylus-module')
+let stylusRule = require('./rules/stylus')
 
 module.exports = projectDir => {
   // Location of the final settings creator.
@@ -41,6 +45,10 @@ module.exports = projectDir => {
     'node_modules',
     'src'
   ]
+
+  const DEV_PLUGINS = !IS_DEV
+    ? []
+    : [new webpack.NamedModulesPlugin()]
 
   // Actual settings.
   return {
@@ -87,13 +95,15 @@ module.exports = projectDir => {
         cssRule,
         htmlRule,
         jsRule,
+        lessModuleRule,
+        lessRule,
         rawRule,
         sassModuleRule(MODULE_PATHS),
-        sassRule(MODULE_PATHS)
+        sassRule(MODULE_PATHS),
+        stylusModuleRule,
+        stylusRule
       ]
     },
-    plugins: [
-      new webpack.NamedModulesPlugin()
-    ]
+    plugins: [ ...DEV_PLUGINS ]
   }
 }
