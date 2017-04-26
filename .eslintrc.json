@@ -1,4 +1,3 @@
 {
-  "extends": "ctrine-js-node",
-  "parser": "Babel-ESLint"
+  "extends": "ctrine-js-node"
 }
