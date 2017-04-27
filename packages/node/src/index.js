@@ -10,32 +10,12 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-const IS_DEV = require('isdev')
-let path = require('path')
-let webpack = require('webpack')
-
 let createBasicSettings = require('./main')
+let path = require('path')
 
-// The parent script must be the actual webpack config file at the root of the
-// project so that we can determine the project’s directory.
-const PROJECT_DIR = path.dirname(module.parent.filename)
-
-// Settings skeleton.
-let settings = createBasicSettings(PROJECT_DIR, 'node')
-
-// Disable polyfills.
-settings.node = {
-  __dirname: false,
-  __filename: false
-}
-
-if (!IS_DEV) {
-  // Compress and remove comments.
-  settings.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      comments: false
-    })
-  )
-}
-
-module.exports = settings
+module.exports = createBasicSettings(
+  // The parent script must be the actual webpack config file at the root of the
+  // project so that we can determine the project’s directory.
+  path.dirname(module.parent.filename),
+  'node'
+)

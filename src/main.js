@@ -11,6 +11,7 @@
 // the License.
 
 const IS_DEV = require('isdev')
+let HtmlPlugin = require('html-webpack-plugin')
 let nodeExternals = require('webpack-node-externals')
 let path = require('path')
 let webpack = require('webpack')
@@ -28,7 +29,7 @@ let sassRule = require('./rules/sass')
 let stylusModuleRule = require('./rules/stylus-module')
 let stylusRule = require('./rules/stylus')
 
-module.exports = (projectDir, environment) => {
+function getSharedSkeleton(projectDir) {
   // Location of the final settings creator.
   const SETTINGS_DIR = path.dirname(module.parent.filename)
 
@@ -40,35 +41,16 @@ module.exports = (projectDir, environment) => {
     // Some dependencies might be installed inside the settings directory, this
     // is useful when changes are made to this project locally.
     path.join(SETTINGS_DIR, '..', 'node_modules'),
-    // Lookup directories.
+    // Main lookup directories.
     path.join(projectDir, 'node_modules'),
     path.join(projectDir, 'src'),
     'node_modules',
     'src'
   ]
 
-  // Plugins that will be used only during development.
   const DEV_PLUGINS = IS_DEV
+    // Prints readable module names in the browser console on HMR updates.
     ? [new webpack.NamedModulesPlugin()]
-    : []
-
-
-  // Excluding all external modules from the bundle as it really doesn't make
-  // sense to bundle them if the script is being executed with NodeJS.
-  const NODE_EXTERNALS = environment === 'node'
-    ? nodeExternals()
-    : []
-
-  // Plugins used during development which are exclusive to node apps.
-  const NODE_DEV_PLUGINS = environment === 'node'
-    ? [
-      // Adds source map support for exceptions.
-      new webpack.BannerPlugin({
-        banner: 'require("source-map-support/register");',
-        entryOnly: false,
-        raw: true
-      })
-    ]
     : []
 
   // Actual settings.
@@ -83,7 +65,7 @@ module.exports = (projectDir, environment) => {
       'babel-polyfill',
       'main'
     ],
-    externals: [...NODE_EXTERNALS],
+    externals: [],
     module: {
       rules: [
         assetRule,
@@ -111,15 +93,13 @@ module.exports = (projectDir, environment) => {
       setImmediate: false
     },
     output: {
-      filename: 'index.js',
       path: BUILD_DIR
     },
     performance: {
       hints: !IS_DEV
     },
     plugins: [
-      ...DEV_PLUGINS,
-      ...NODE_DEV_PLUGINS
+      ...DEV_PLUGINS
     ],
     resolve: {
       extensions: [
@@ -142,7 +122,94 @@ module.exports = (projectDir, environment) => {
     },
     resolveLoader: {
       modules: MODULE_PATHS
-    },
-    target: environment
+    }
   }
+}
+
+function getNodeSkeleton(projectDir) {
+  let settings = getSharedSkeleton(projectDir)
+
+  // Target environment.
+  settings.target = 'node'
+
+  // NodeJS already expects a file with this name so it makes sense for the
+  // compiled entry point be like this and save a few chars when trying to
+  // execute the file.
+  settings.output.filename = 'index.js'
+
+  // Excluding all external modules from the bundle as it really doesn't make
+  // sense to bundle them if the script is being executed Node.
+  settings.externals.push(nodeExternals())
+
+  if (IS_DEV) {
+    settings.plugins.push(
+      // Adds source map support for exceptions in dev builds.
+      new webpack.BannerPlugin({
+        banner: 'require("source-map-support/register");',
+        entryOnly: false,
+        raw: true
+      })
+    )
+  }
+
+  return settings
+}
+
+function getCliSkeleton(projectDir) {
+  let settings = getNodeSkeleton(projectDir)
+
+  // Make the script executable.
+  settings.plugins.push(
+    new webpack.BannerPlugin({
+      banner: '#!/usr/bin/env node',
+      entryOnly: false,
+      raw: true
+    })
+  )
+
+  return settings
+}
+
+function getWebSkeleton(projectDir) {
+  let settings = getSharedSkeleton(projectDir)
+
+  // Target environment.
+  settings.target = 'web'
+
+  // The hash in the end is used by HtmlPlugin.
+  settings.output.filename = 'script.js?[hash:8]'
+
+  // Main entry point to the single page app.
+  settings.plugins.push(
+    new HtmlPlugin({
+      template: path.join(projectDir, 'src', 'index.html')
+    })
+  )
+
+  return settings
+}
+
+module.exports = (projectDir, environment) => {
+  let settings = {}
+  switch (environment) {
+  case 'cli':
+    settings = getCliSkeleton(projectDir)
+    break
+  case 'node':
+    settings = getNodeSkeleton(projectDir)
+    break
+  case 'web':
+    settings = getWebSkeleton(projectDir)
+  }
+
+  if (!IS_DEV) {
+    // Compress and remove comments in production.
+    settings.plugins.push(
+      new webpack.optimize.UglifyJsPlugin({
+        comments: false
+      })
+    )
+  }
+
+  return settings
 }
