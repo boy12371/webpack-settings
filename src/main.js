@@ -85,12 +85,7 @@ function getSharedSkeleton(projectDir) {
     node: {
       // Disable polyfills.
       __dirname: false,
-      __filename: false,
-      Buffer: false,
-      console: false,
-      global: false,
-      process: false,
-      setImmediate: false
+      __filename: false
     },
     output: {
       path: BUILD_DIR
