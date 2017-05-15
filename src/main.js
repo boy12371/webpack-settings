@@ -14,6 +14,7 @@ const IS_DEV = require('isdev')
 let HtmlPlugin = require('html-webpack-plugin')
 let nodeExternals = require('webpack-node-externals')
 let path = require('path')
+let fs = require('fs')
 let webpack = require('webpack')
 
 let assetRule = require('./rules/asset')
@@ -175,11 +176,12 @@ function getWebSkeleton(projectDir) {
   settings.output.filename = 'script.js?[hash:8]'
 
   // Main entry point to the single page app.
-  settings.plugins.push(
-    new HtmlPlugin({
-      template: path.join(projectDir, 'src', 'index.html')
-    })
-  )
+  const TEMPLATE_PATH = path.join(projectDir, 'src', 'index.html')
+
+  if (fs.existsSync(TEMPLATE_PATH))
+    settings.plugins.push(new HtmlPlugin({ template: TEMPLATE_PATH }))
+  else
+    settings.plugins.push(new HtmlPlugin())
 
   return settings
 }

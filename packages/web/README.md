@@ -24,6 +24,8 @@ webpack.config.js
 ```
 * **build:** Directory where the compiled files will reside.
 * **src:** Project’s source.
-* **main.js:** Entry point.
+* **index.html:** Optional template used as the entry point for you single page
+  app. This can be used if you need to import external libraries.
+* **main.js:** Entry point
 * **webpack.config.js:** Actual webpack config, the location of this file is
   used do determine the location of the `build` and `src` directories.
