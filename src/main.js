@@ -134,8 +134,13 @@ function getNodeSkeleton(projectDir) {
   settings.output.filename = 'index.js'
 
   // Excluding all external modules from the bundle as it really doesn't make
-  // sense to bundle them if the script is being executed Node.
-  settings.externals.push(nodeExternals())
+  // sense to bundle them if the script is being executed in Node.
+  settings.externals.push(nodeExternals({ whitelist: [
+    'babel-polyfill',
+    'core-js/fn/regexp/escape',
+    'core-js/shim',
+    'regenerator-runtime/runtime'
+  ]}))
 
   if (IS_DEV) {
     settings.plugins.push(
