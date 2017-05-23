@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-cli",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Common webpack settings for building cli apps.",
   "license": "Apache-2.0",
   "main": "build",
@@ -35,5 +35,8 @@
   },
   "dependencies": {
     "ctrine-dev-preset": "^3.0.0"
+  },
+  "peerDependencies": {
+    "babel-polyfill": "^6.20.0"
   }
 }
