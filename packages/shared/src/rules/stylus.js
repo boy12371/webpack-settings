@@ -10,10 +10,25 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-module.exports = {
-  exclude: /node_modules/,
-  test: /\.(pem|txt)$/,
+import IS_DEV from 'isdev'
+
+export default {
+  exclude: /\.module\.styl$/,
+  test: /\.styl$/,
   use: [{
-    loader: 'raw-loader'
+    loader: 'style-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'css-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'postcss-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'stylus-loader',
+    options: {
+      preferPathResolver: 'webpack',
+      sourceMap: IS_DEV
+    }
   }]
 }

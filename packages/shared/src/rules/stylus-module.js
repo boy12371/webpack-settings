@@ -10,11 +10,25 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-module.exports = {
-  exclude: /node_modules/,
-  test: /\.(jpg|png|svg)$/,
+import IS_DEV from 'isdev'
+
+export default {
+  test: /\.module\.styl$/,
   use: [{
-    loader: 'url-loader',
-    options: { limit: 0 }
+    loader: 'style-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'css-loader',
+    options: {
+      localIdentName: '[sha512:hash:base32]-[name]-[local]',
+      modules: true,
+      sourceMap: IS_DEV
+    }
+  }, {
+    loader: 'postcss-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'stylus-loader',
+    options: { sourceMap: IS_DEV }
   }]
 }

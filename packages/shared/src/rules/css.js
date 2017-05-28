@@ -10,12 +10,19 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-module.exports = {
-  test: /\.html$/,
+import IS_DEV from 'isdev'
+
+export default {
+  exclude: /\.module\.css$/,
+  test: /\.css$/,
   use: [{
-    loader: 'html-loader',
-    options: {
-      attrs: [ 'img:src', 'link:href' ]
-    }
+    loader: 'style-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'css-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'postcss-loader',
+    options: { sourceMap: IS_DEV }
   }]
 }

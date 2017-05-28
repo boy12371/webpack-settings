@@ -10,12 +10,10 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-module.exports = {
+export default {
   exclude: /node_modules/,
-  test: /\.jsx?$/,
+  test: /\.(pem|txt)$/,
   use: [{
-    loader: 'babel-loader'
-  }, {
-    loader: 'source-map-loader'
+    loader: 'raw-loader'
   }]
 }

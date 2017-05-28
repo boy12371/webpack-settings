@@ -1,4 +1,4 @@
-Common webpack settings for web apps.
+Common Webpack settings for web apps.
 
 ## Installation
 
@@ -11,7 +11,7 @@ npm install ctrine-webpack-settings-web
 The settings can be used directly in your `webpack.config.js` like so:
 
 ```Javascript
-module.exports = require('ctrine-webpack-settings-web')
+module.exports = require('ctrine-webpack-settings-web').default
 ```
 
 ## Expected directory structure
@@ -27,5 +27,5 @@ webpack.config.js
 * **index.html:** Optional template used as the entry point for you single page
   app. This can be used if you need to import external libraries.
 * **main.js:** Entry point
-* **webpack.config.js:** Actual webpack config, the location of this file is
+* **webpack.config.js:** Actual Webpack config, the location of this file is
   used do determine the location of the `build` and `src` directories.

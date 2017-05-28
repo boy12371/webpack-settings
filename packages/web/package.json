@@ -1,7 +1,7 @@
 {
   "name": "ctrine-webpack-settings-web",
-  "version": "4.0.2",
-  "description": "Common webpack settings for building web apps.",
+  "version": "5.0.4",
+  "description": "Common Webpack settings for building web apps.",
   "license": "Apache-2.0",
   "main": "build",
   "scripts": {
@@ -34,6 +34,7 @@
     "url": "http://www.borela.tech"
   },
   "dependencies": {
-    "ctrine-dev-preset": "^3.0.0"
+    "babel-preset-ctrine-web": "^1.0.0",
+    "ctrine-webpack-settings-shared": "^5.0.4"
   }
 }

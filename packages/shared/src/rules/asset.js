@@ -10,21 +10,11 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-const IS_DEV = require('isdev')
-
-module.exports = {
-  test: /\.less$/,
+export default {
+  exclude: /node_modules/,
+  test: /\.(jpg|png|svg)$/,
   use: [{
-    loader: 'style-loader',
-    options: { sourceMap: IS_DEV }
-  }, {
-    loader: 'css-loader',
-    options: { sourceMap: IS_DEV }
-  }, {
-    loader: 'postcss-loader',
-    options: { sourceMap: IS_DEV }
-  }, {
-    loader: 'less-loader',
-    options: { sourceMap: IS_DEV }
+    loader: 'url-loader',
+    options: { limit: 0 }
   }]
 }

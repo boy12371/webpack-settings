@@ -10,12 +10,42 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-let createBasicSettings = require('./main')
-let path = require('path')
+import IS_DEV from 'isdev'
+import HtmlPlugin from 'html-webpack-plugin'
+import webpack from 'webpack'
+import { createSettings as createSharedSettings } from 'ctrine-webpack-settings-shared'
+import { dirname, join } from 'path'
+import { existsSync } from 'fs'
 
-module.exports = createBasicSettings(
+export function createSettings(projectDir) {
+  let settings = createSharedSettings(projectDir)
+
+  // Target environment.
+  settings.target = 'web'
+
+  // The hash in the end is used by HtmlPlugin.
+  settings.output.filename = 'script.js?[hash:8]'
+
+  // Main entry point to the single page app.
+  const TEMPLATE_PATH = join(projectDir, 'src', 'index.html')
+
+  if (existsSync(TEMPLATE_PATH))
+    settings.plugins.push(new HtmlPlugin({ template: TEMPLATE_PATH }))
+  else
+    settings.plugins.push(new HtmlPlugin())
+
+  if (!IS_DEV) {
+    // Compress and remove comments in production.
+    settings.plugins.push(
+      new webpack.optimize.UglifyJsPlugin({ comments: false })
+    )
+  }
+
+  return settings
+}
+
+export default createSettings(
   // The parent script must be the actual webpack config file at the root of the
   // project so that we can determine the project’s directory.
-  path.dirname(module.parent.filename),
-  'web'
+  dirname(module.parent.filename)
 )

@@ -10,18 +10,12 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-const IS_DEV = require('isdev')
-
-module.exports = {
-  test: /\.css$/,
+export default {
+  exclude: /node_modules/,
+  test: /\.jsx?$/,
   use: [{
-    loader: 'style-loader',
-    options: { sourceMap: IS_DEV }
+    loader: 'babel-loader'
   }, {
-    loader: 'css-loader',
-    options: { sourceMap: IS_DEV }
-  }, {
-    loader: 'postcss-loader',
-    options: { sourceMap: IS_DEV }
+    loader: 'source-map-loader'
   }]
 }

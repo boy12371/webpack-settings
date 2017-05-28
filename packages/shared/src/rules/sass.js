@@ -10,10 +10,11 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-const IS_DEV = require('isdev')
+import IS_DEV from 'isdev'
 
-module.exports = {
-  test: /\.styl$/,
+export default modulePaths => ({
+  exclude: /\.module\.s[ac]ss$/,
+  test: /\.s[ac]ss$/,
   use: [{
     loader: 'style-loader',
     options: { sourceMap: IS_DEV }
@@ -24,10 +25,10 @@ module.exports = {
     loader: 'postcss-loader',
     options: { sourceMap: IS_DEV }
   }, {
-    loader: 'stylus-loader',
+    loader: 'sass-loader',
     options: {
-      preferPathResolver: 'webpack',
+      includePaths: modulePaths,
       sourceMap: IS_DEV
     }
   }]
-}
+})

@@ -10,10 +10,10 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-const IS_DEV = require('isdev')
+import IS_DEV from 'isdev'
 
-module.exports = modulePaths => ({
-  test: /\.ms[ac]ss$/,
+export default {
+  test: /\.module\.less$/,
   use: [{
     loader: 'style-loader',
     options: { sourceMap: IS_DEV }
@@ -28,10 +28,10 @@ module.exports = modulePaths => ({
     loader: 'postcss-loader',
     options: { sourceMap: IS_DEV }
   }, {
-    loader: 'sass-loader',
+    loader: 'less-loader',
     options: {
-      includePaths: modulePaths,
+      preferPathResolver: 'webpack',
       sourceMap: IS_DEV
     }
   }]
-})
+}

@@ -10,10 +10,10 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-const IS_DEV = require('isdev')
+import IS_DEV from 'isdev'
 
-module.exports = {
-  test: /\.mless$/,
+export default {
+  test: /\.module\.css$/,
   use: [{
     loader: 'style-loader',
     options: { sourceMap: IS_DEV }
@@ -27,11 +27,5 @@ module.exports = {
   }, {
     loader: 'postcss-loader',
     options: { sourceMap: IS_DEV }
-  }, {
-    loader: 'less-loader',
-    options: {
-      preferPathResolver: 'webpack',
-      sourceMap: IS_DEV
-    }
   }]
 }
