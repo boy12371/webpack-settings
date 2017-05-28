@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-node",
-  "version": "5.0.0",
+  "version": "5.0.4",
   "description": "Common Webpack settings for building node apps.",
   "license": "Apache-2.0",
   "main": "build",
@@ -35,6 +35,6 @@
   },
   "dependencies": {
     "babel-preset-ctrine-node": "^1.0.0",
-    "ctrine-webpack-settings-shared": "^5.0.0"
+    "ctrine-webpack-settings-shared": "^5.0.4"
   }
 }

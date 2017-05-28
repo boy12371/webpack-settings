@@ -13,7 +13,7 @@
 import IS_DEV from 'isdev'
 
 export default {
-  test: /\.module\.styl)$/,
+  test: /\.module\.styl$/,
   use: [{
     loader: 'style-loader',
     options: { sourceMap: IS_DEV }

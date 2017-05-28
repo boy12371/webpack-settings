@@ -10,10 +10,12 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
+import IS_DEV from 'isdev'
 import HtmlPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
 import { createSettings as createSharedSettings } from 'ctrine-webpack-settings-shared'
-import { dirname } from 'path'
+import { dirname, join } from 'path'
+import { existsSync } from 'fs'
 
 export function createSettings(projectDir) {
   let settings = createSharedSettings(projectDir)
