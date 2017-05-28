@@ -1,4 +1,4 @@
-Common webpack settings for cli apps.
+Common Webpack settings for cli apps.
 
 ## Installation
 
@@ -25,5 +25,5 @@ webpack.config.js
 * **build:** Directory where the compiled files will reside.
 * **src:** Project’s source.
 * **main.js:** Entry point.
-* **webpack.config.js:** Actual webpack config, the location of this file is
+* **webpack.config.js:** Actual Webpack config, the location of this file is
   used do determine the location of the `build` and `src` directories.

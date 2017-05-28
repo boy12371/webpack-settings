@@ -10,12 +10,34 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-let createBasicSettings = require('./main')
-let path = require('path')
+import webpack from 'webpack'
+import { createSettings as createNodeSettings } from 'ctrine-webpack-settings-node'
+import { dirname } from 'path'
 
-module.exports = createBasicSettings(
+export function createSettings(projectDir) {
+  let settings = createNodeSettings(projectDir)
+
+  // Make the script executable.
+  settings.plugins.push(
+    new webpack.BannerPlugin({
+      banner: '#!/usr/bin/env node',
+      entryOnly: false,
+      raw: true
+    })
+  )
+
+  if (!IS_DEV) {
+    // Compress and remove comments in production.
+    settings.plugins.push(
+      new webpack.optimize.UglifyJsPlugin({ comments: false })
+    )
+  }
+
+  return settings
+}
+
+export default createSettings(
   // The parent script must be the actual webpack config file at the root of the
   // project so that we can determine the project’s directory.
-  path.dirname(module.parent.filename),
-  'cli'
+  dirname(module.parent.filename)
 )
