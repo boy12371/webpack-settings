@@ -10,12 +10,25 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-module.exports = {
-  exclude: /node_modules/,
-  test: /\.jsx?$/,
+import IS_DEV from 'isdev'
+
+export default {
+  test: /\.(?>mstyl|(local|module)\.styl)$/,
   use: [{
-    loader: 'babel-loader'
+    loader: 'style-loader',
+    options: { sourceMap: IS_DEV }
   }, {
-    loader: 'source-map-loader'
+    loader: 'css-loader',
+    options: {
+      localIdentName: '[sha512:hash:base32]-[name]-[local]',
+      modules: true,
+      sourceMap: IS_DEV
+    }
+  }, {
+    loader: 'postcss-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'stylus-loader',
+    options: { sourceMap: IS_DEV }
   }]
 }

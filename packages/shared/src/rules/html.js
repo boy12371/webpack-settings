@@ -10,24 +10,12 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-const IS_DEV = require('isdev')
-
-module.exports = modulePaths => ({
-  test: /\.s[ac]ss$/,
+export default {
+  test: /\.html$/,
   use: [{
-    loader: 'style-loader',
-    options: { sourceMap: IS_DEV }
-  }, {
-    loader: 'css-loader',
-    options: { sourceMap: IS_DEV }
-  }, {
-    loader: 'postcss-loader',
-    options: { sourceMap: IS_DEV }
-  }, {
-    loader: 'sass-loader',
+    loader: 'html-loader',
     options: {
-      includePaths: modulePaths,
-      sourceMap: IS_DEV
+      attrs: [ 'img:src', 'link:href' ]
     }
   }]
-})
+}

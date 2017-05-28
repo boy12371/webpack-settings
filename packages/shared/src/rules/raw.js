@@ -10,7 +10,7 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-module.exports = {
+export default {
   exclude: /node_modules/,
   test: /\.(pem|txt)$/,
   use: [{

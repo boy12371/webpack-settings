@@ -10,12 +10,28 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-module.exports = {
-  test: /\.html$/,
+import IS_DEV from 'isdev'
+
+export default {
+  test: /\.(?>mless|(local|module)\.less)$/,
   use: [{
-    loader: 'html-loader',
+    loader: 'style-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'css-loader',
     options: {
-      attrs: [ 'img:src', 'link:href' ]
+      localIdentName: '[sha512:hash:base32]-[name]-[local]',
+      modules: true,
+      sourceMap: IS_DEV
+    }
+  }, {
+    loader: 'postcss-loader',
+    options: { sourceMap: IS_DEV }
+  }, {
+    loader: 'less-loader',
+    options: {
+      preferPathResolver: 'webpack',
+      sourceMap: IS_DEV
     }
   }]
 }
