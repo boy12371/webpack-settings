@@ -13,7 +13,7 @@
 import IS_DEV from 'isdev'
 
 export default modulePaths => ({
-  test: /\.(?>ms[ac]ss|(local|module)\.s[ac]ss)$/,
+  test: /\.module\.s[ac]ss)$/,
   use: [{
     loader: 'style-loader',
     options: { sourceMap: IS_DEV }

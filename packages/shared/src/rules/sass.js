@@ -13,7 +13,7 @@
 import IS_DEV from 'isdev'
 
 export default modulePaths => ({
-  exclude: /\.(local|module).s[ac]ss$/,
+  exclude: /\.module\.s[ac]ss$/,
   test: /\.s[ac]ss$/,
   use: [{
     loader: 'style-loader',

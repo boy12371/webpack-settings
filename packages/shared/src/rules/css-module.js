@@ -13,7 +13,7 @@
 import IS_DEV from 'isdev'
 
 export default {
-  test: /\.(?>mcss|(local|module).css)$/,
+  test: /\.module\.css$/,
   use: [{
     loader: 'style-loader',
     options: { sourceMap: IS_DEV }

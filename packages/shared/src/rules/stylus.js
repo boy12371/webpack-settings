@@ -13,7 +13,7 @@
 import IS_DEV from 'isdev'
 
 export default {
-  exclude: /\.(local|module).styl$/,
+  exclude: /\.module\.styl$/,
   test: /\.styl$/,
   use: [{
     loader: 'style-loader',

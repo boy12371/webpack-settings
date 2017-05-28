@@ -13,7 +13,7 @@
 import IS_DEV from 'isdev'
 
 export default {
-  test: /\.(?>mless|(local|module)\.less)$/,
+  test: /\.module\.less)$/,
   use: [{
     loader: 'style-loader',
     options: { sourceMap: IS_DEV }
