@@ -1,4 +1,4 @@
 # Ctrine - Webpack settings
 
-Common webpack settings to build Cli, Node and Web apps. Check the [packages](./packages)
+Common webpack settings to build node apps and websites. Check the [packages](./packages)
 directory for the available settings.
