@@ -11,7 +11,7 @@ npm install ctrine-webpack-settings-node
 The settings can be used directly in your `webpack.config.js` like so:
 
 ```Javascript
-module.exports = require('ctrine-webpack-settings-node')
+module.exports = require('ctrine-webpack-settings-node').default
 ```
 
 ## Expected directory structure
