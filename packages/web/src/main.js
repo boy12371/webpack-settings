@@ -12,8 +12,8 @@
 
 import App from 'App.js'
 import React from 'react'
-import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import { render } from 'react-dom'
 
 const ROOT = document.getElementById('root')
 
