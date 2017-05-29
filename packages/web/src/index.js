@@ -23,6 +23,9 @@ export function createSettings(projectDir) {
   // Target environment.
   settings.target = 'web'
 
+  // Insert the patch before the entry point.
+  settings.entry.splice(settings.entry.length - 2, 0, 'react-hot-loader/patch')
+
   // The hash in the end is used by HtmlPlugin.
   settings.output.filename = 'script.js?[hash:8]'
 
