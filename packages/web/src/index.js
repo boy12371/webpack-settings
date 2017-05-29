@@ -17,14 +17,27 @@ import { createSettings as createSharedSettings } from 'ctrine-webpack-settings-
 import { dirname, join } from 'path'
 import { existsSync } from 'fs'
 
+const PROJECT_DIR = dirname(module.parent.filename)
+const SETTINGS_DIR = dirname(module.filename)
+
 export function createSettings(projectDir) {
   let settings = createSharedSettings(projectDir)
 
   // Target environment.
   settings.target = 'web'
 
-  // Insert the patch before the entry point.
-  settings.entry.splice(settings.entry.length - 2, 0, 'react-hot-loader/patch')
+  // Insert the patch before the entry point and polyfill.
+  settings.entry = [
+    'react-hot-loader/patch',
+    ...settings.entry
+  ]
+
+  // Use the default “main” entry point if a custom one is not found.
+  const DEFAULT_ENTRY = join(SETTINGS_DIR, 'main.js')
+  const CUSTOM_ENTRY = join(projectDir, 'src', 'main.js')
+
+  if (!existsSync(CUSTOM_ENTRY))
+    settings.entry[settings.entry.length - 1] = DEFAULT_ENTRY
 
   // The hash in the end is used by HtmlPlugin.
   settings.output.filename = 'script.js?[hash:8]'
@@ -50,5 +63,5 @@ export function createSettings(projectDir) {
 export default createSettings(
   // The parent script must be the actual webpack config file at the root of the
   // project so that we can determine the project’s directory.
-  dirname(module.parent.filename)
+  PROJECT_DIR
 )

@@ -39,6 +39,7 @@ Add the [Ctrine - Web Lint](https://github.com/ctrine/lint-config) to the
 build
 src
   App.js
+  index.html
 .babelrc
 .eslintrc.json
 webpack.config.js
@@ -48,6 +49,8 @@ webpack.config.js
 * **index.html:** Optional template used as the entry point for you single page
   app. This can be used if you need to import external libraries.
 * **App.js:** Your app class.
+* **index.html:** Optional template used to render the app. It must have an
+  element with the attribute `id="root"`.
 * **.babelrc**: Preset with the necessary dependencies to compile and enable hot
   loading.
 * **.eslintrc**: ESLint settings.
