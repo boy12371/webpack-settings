@@ -64,6 +64,6 @@ webpack.config.js
 * [CSS modules with the extensions][css-modules-extensions]: `.module.css`,
   `.module.sass`, `.module.scss`
   and `.module.styl`.
-* [Hot loading for React JS](https://github.com/gaearon/react-hot-loader).
+* [Hot Reloading for ReactJS](https://github.com/gaearon/react-hot-loader).
 
 [css-modules-extensions]: https://github.com/css-modules/css-modules/issues/229#issuecomment-304040593
