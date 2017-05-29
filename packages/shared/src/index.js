@@ -85,9 +85,7 @@ export function createSettings(projectDir) {
     performance: {
       hints: !IS_DEV
     },
-    plugins: [
-      ...DEV_PLUGINS
-    ],
+    plugins: [...DEV_PLUGINS],
     resolve: {
       extensions: [
         '.css',
