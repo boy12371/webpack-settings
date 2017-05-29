@@ -26,5 +26,9 @@
   "dependencies": {
     "babel-preset-ctrine-web": "^1.4.4",
     "ctrine-webpack-settings-shared": "^5.0.4"
+  },
+  "peerDependency": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   }
 }
