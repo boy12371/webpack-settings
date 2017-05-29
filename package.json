@@ -15,7 +15,7 @@
     "postinstall": "lerna boostrap"
   },
   "devDependencies": {
-    "babel-preset-ctrine-lib": "^1.0.0",
+    "babel-preset-ctrine-lib": "^1.4.4",
     "ctrine-dev-preset": "^4.0.2",
     "lerna": "^2.0.0-rc.5"
   }
