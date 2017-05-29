@@ -42,7 +42,7 @@ export function createSettings(projectDir) {
   // The hash in the end is used by HtmlPlugin.
   settings.output.filename = 'script.js?[hash:8]'
 
-  // Main entry point to the single page app.
+  // Template used to render the app.
   const TEMPLATE_PATH = join(projectDir, 'src', 'index.html')
 
   if (existsSync(TEMPLATE_PATH))
