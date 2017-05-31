@@ -10,6 +10,7 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
+import IS_DEV from 'isdev'
 import webpack from 'webpack'
 import { createSettings as createNodeSettings } from 'ctrine-webpack-settings-node'
 import { dirname } from 'path'
