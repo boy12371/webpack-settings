@@ -50,3 +50,11 @@ webpack.config.js
 * **.eslintrc**: ESLint settings.
 * **webpack.config.js:** Actual Webpack config, the location of this file is
   used do determine the location of the `build` and `src` directories.
+
+## Features
+
+* SASS, LESS and Stylus.
+* All CSS files are processed with [PostCSS](https://github.com/postcss/postcss).
+* [CSS modules with the extensions][css-modules-extensions]: `.module.css`,
+  `.module.less`, `.module.sass`, `.module.scss`
+  and `.module.styl`.

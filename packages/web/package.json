@@ -1,6 +1,6 @@
 {
   "name": "ctrine-webpack-settings-web",
-  "version": "5.1.1",
+  "version": "5.2.0",
   "description": "Common Webpack settings for building web apps.",
   "license": "Apache-2.0",
   "main": "build",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "babel-preset-ctrine-web": "^1.4.4",
-    "ctrine-webpack-settings-shared": "^5.1.1"
+    "ctrine-webpack-settings-shared": "^5.2.0"
   },
   "peerDependency": {
     "react": "^15.5.4",
