@@ -60,10 +60,11 @@ webpack.config.js
 ## Features
 
 * SASS, LESS and Stylus.
-* All CSS files are processed with [PostCSS](https://github.com/postcss/postcss).
+* All CSS files are processed with [PostCSS][postcss].
 * [CSS modules with the extensions][css-modules-extensions]: `.module.css`,
   `.module.less`, `.module.sass`, `.module.scss`
   and `.module.styl`.
 * [Hot Reloading for ReactJS](https://github.com/gaearon/react-hot-loader).
 
 [css-modules-extensions]: https://github.com/css-modules/css-modules/issues/229#issuecomment-304040593
+[postcss]: https://github.com/postcss/postcss
