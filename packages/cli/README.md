@@ -58,3 +58,5 @@ webpack.config.js
 * [CSS modules with the extensions][css-modules-extensions]: `.module.css`,
   `.module.less`, `.module.sass`, `.module.scss`
   and `.module.styl`.
+
+[css-modules-extensions]: https://github.com/css-modules/css-modules/issues/229#issuecomment-304040593
