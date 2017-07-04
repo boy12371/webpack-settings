@@ -8,14 +8,19 @@ npm install ctrine-webpack-settings-cli
 
 ## Usage
 
+### Webpack settings
+
 The settings can be used directly in your `webpack.config.js` like so:
 
 ```Javascript
 module.exports = require('ctrine-webpack-settings-cli').default
 ```
 
-Add the [Ctrine - Node Babel Preset](https://github.com/ctrine/babel-presets) to
-the `.babelrc`:
+### Babel preset (Optional)
+
+[A babel preset is also included](https://github.com/ctrine/babel-presets) and it
+contains a lot of useful plugins to support all the bleeding edge features
+available for babel. Add it to the `.babelrc` like so:
 
 ```json
 {
@@ -23,8 +28,10 @@ the `.babelrc`:
 }
 ```
 
-Add the [Ctrine - Node Lint](https://github.com/ctrine/lint-config) to the
-`.eslintrc.json`:
+### ESLint settings (Optional)
+
+[ESLint settings](https://github.com/ctrine/lint-config) containing the recommended
+code style is also included. Add it to the `.eslintrc.json` like so:
 
 ```json
 {
