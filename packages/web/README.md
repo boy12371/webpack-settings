@@ -2,7 +2,7 @@ Common Webpack settings for web apps.
 
 ## Example
 
-[You can find the example in examples directory.](../../examples/web)
+[You can find an example in the examples directory.](../../examples/web)
 
 ## Installation
 
