@@ -26,7 +26,8 @@ export function createSettings(projectDir) {
   // Target environment.
   settings.target = 'web'
 
-  // Insert the patch before the entry point and polyfill.
+  // Insert the patch before the entry point and polyfill to enable hot reloading
+  // for react apps.
   settings.entry = [
     'react-hot-loader/patch',
     ...settings.entry
@@ -43,12 +44,14 @@ export function createSettings(projectDir) {
   settings.output.filename = 'script.js?[hash:8]'
 
   // Template used to render the app.
-  const TEMPLATE_PATH = join(projectDir, 'src', 'index.html')
+  const DEFAULT_TEMPLATE = join(SETTINGS_DIR, 'index.html')
+  const CUSTOM_TEMPLATE = join(projectDir, 'src', 'index.html')
 
-  if (existsSync(TEMPLATE_PATH))
-    settings.plugins.push(new HtmlPlugin({ template: TEMPLATE_PATH }))
-  else
-    settings.plugins.push(new HtmlPlugin())
+  settings.plugins.push(new HtmlPlugin({
+    template: existsSync(CUSTOM_TEMPLATE)
+      ? CUSTOM_TEMPLATE
+      : DEFAULT_TEMPLATE
+  }))
 
   if (!IS_DEV) {
     // Compress and remove comments in production.
