@@ -1,0 +1,26 @@
+{
+  "name": "www.website.com",
+  "version": "1.0.0",
+  "description": "Some description.",
+  "license": "Apache",
+  "scripts": {
+    "clean": "rimraf \"build/!(.git)\"",
+    "build": "npm run clean && webpack",
+    "dev": "jest src --verbose --watch",
+    "start": "webpack-dev-server --hot",
+    "test": "jest src --verbose"
+  },
+  "author": {
+    "name": "Alexandre Borela",
+    "email": "alexandre@borela.tech",
+    "url": "http://www.borela.tech"
+  },
+  "dependencies": {
+    "loglevel": "^1.4.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "ctrine-webpack-settings-web": "^5.2.2"
+  }
+}
