@@ -2,7 +2,7 @@ Common Webpack settings for web apps.
 
 ## Example
 
-[You can find an example in the examples directory.](../../examples/web)
+[You can find an example in the examples directory.][example]
 
 ## Installation
 
@@ -78,4 +78,5 @@ webpack.config.js
 * [Hot Reloading for ReactJS](https://github.com/gaearon/react-hot-loader).
 
 [css-modules-extensions]: https://github.com/css-modules/css-modules/issues/229#issuecomment-304040593
+[example]: https://github.com/ctrine/webpack-settings/blob/master/examples/web
 [postcss]: https://github.com/postcss/postcss
