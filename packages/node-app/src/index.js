@@ -13,7 +13,7 @@
 import IS_DEV from 'isdev'
 import nodeExternals from 'webpack-node-externals'
 import webpack from 'webpack'
-import { createSettings as createSharedSettings } from 'ctrine-webpack-settings-shared'
+import { createSettings as createSharedSettings } from '@ctrine/webpack-settings-shared'
 import { dirname } from 'path'
 
 export function createSettings(projectDir) {

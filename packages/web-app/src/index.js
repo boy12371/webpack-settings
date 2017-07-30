@@ -13,7 +13,7 @@
 import IS_DEV from 'isdev'
 import HtmlPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
-import { createSettings as createSharedSettings } from 'ctrine-webpack-settings-shared'
+import { createSettings as createSharedSettings } from '@ctrine/webpack-settings-shared'
 import { dirname, join } from 'path'
 import { existsSync } from 'fs'
 

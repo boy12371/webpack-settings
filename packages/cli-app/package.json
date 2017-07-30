@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "@ctrine/babel-preset-node-app": "^3.0.0",
-    "@ctrine/webpack-settings-shared": "^6.0.0"
+    "@ctrine/webpack-settings-node-app": "^6.0.0"
   }
 }

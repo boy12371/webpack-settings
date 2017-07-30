@@ -12,7 +12,7 @@
 
 import IS_DEV from 'isdev'
 import webpack from 'webpack'
-import { createSettings as createNodeSettings } from 'ctrine-webpack-settings-node'
+import { createSettings as createNodeSettings } from '@ctrine/webpack-settings-node-app'
 import { dirname } from 'path'
 
 export function createSettings(projectDir) {
