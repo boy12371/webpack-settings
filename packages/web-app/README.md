@@ -78,5 +78,5 @@ webpack.config.js
 * [Hot Reloading for ReactJS](https://github.com/gaearon/react-hot-loader).
 
 [css-modules-extensions]: https://github.com/css-modules/css-modules/issues/229#issuecomment-304040593
-[example]: https://github.com/ctrine/webpack-settings/blob/master/examples/web
+[example]: https://github.com/ctrine/webpack-settings/blob/master/examples/web-app
 [postcss]: https://github.com/postcss/postcss
