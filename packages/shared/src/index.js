@@ -13,7 +13,6 @@
 import IS_DEV from 'isdev'
 import webpack from 'webpack'
 import { dirname, join } from 'path'
-import { existsSync } from 'fs'
 
 import assetRule from './rules/asset'
 import cssModuleRule from './rules/css-module'
@@ -42,7 +41,7 @@ export function createSettings(projectDir) {
 
   const DEV_PLUGINS = IS_DEV
     // Prints readable module names in the browser console on HMR updates.
-    ? [new webpack.NamedModulesPlugin()]
+    ? [ new webpack.NamedModulesPlugin() ]
     : []
 
   // Actual settings.
@@ -85,7 +84,7 @@ export function createSettings(projectDir) {
     performance: {
       hints: !IS_DEV
     },
-    plugins: [...DEV_PLUGINS],
+    plugins: [ ...DEV_PLUGINS ],
     resolve: {
       extensions: [
         '.css',
