@@ -2,23 +2,23 @@
   "scripts": {
     "clean": "rimraf \"packages/*/build/!(.git)\"",
     "build": "npm run clean && run-p build:*",
-    "build:cli": "babel packages/cli/src -d packages/cli/build -s",
-    "build:node": "babel packages/node/src -d packages/node/build -s",
+    "build:cli-app": "babel packages/cli-app/src -d packages/cli-app/build -s",
+    "build:node-app": "babel packages/node-app/src -d packages/node-app/build -s",
     "build:shared": "babel packages/shared/src -d packages/shared/build -s",
-    "build:web": "run-p build:web:*",
-    "build:web:compile": "babel packages/web/src -d packages/web/build -s",
-    "build:web:template": "cpx packages/web/src/index.html packages/web/build",
+    "build:web-app": "run-p build:web-app:*",
+    "build:web-app:compile": "babel packages/web-app/src -d packages/web-app/build -s",
+    "build:web-app:template": "cpx packages/web-app/src/index.html packages/web-app/build",
     "dev": "npm run clean && run-p dev:*",
-    "dev:cli": "babel packages/cli/src -d packages/cli/build -sw",
-    "dev:node": "babel packages/node/src -d packages/node/build -sw",
+    "dev:cli-app": "babel packages/cli-app/src -d packages/cli-app/build -sw",
+    "dev:node-app": "babel packages/node-app/src -d packages/node-app/build -sw",
     "dev:shared": "babel packages/shared/src -d packages/shared/build -sw",
-    "dev:web": "babel packages/web/src -d packages/web/build -sw",
+    "dev:web-app": "babel packages/web-app/src -d packages/web-app/build -sw",
     "start": "npm run dev",
     "postinstall": "lerna boostrap"
   },
   "devDependencies": {
-    "babel-preset-ctrine-lib": "^1.4.4",
-    "ctrine-dev-preset": "^4.0.2",
-    "lerna": "^2.0.0-rc.5"
+    "@ctrine/babel-preset-node-lib": "^3.0.0",
+    "@ctrine/toolbox": "^6.0.0",
+    "lerna": "^2.0.0"
   }
 }
