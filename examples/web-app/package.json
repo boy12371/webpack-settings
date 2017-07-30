@@ -16,11 +16,10 @@
     "url": "http://www.borela.tech"
   },
   "dependencies": {
-    "loglevel": "^1.4.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "ctrine-webpack-settings-web": "^5.2.2"
+    "@ctrine/webpack-settings-web-app": "^6.0.0"
   }
 }
