@@ -7,7 +7,7 @@ Common Webpack settings for web apps.
 ## Installation
 
 ```shell
-npm install ctrine-webpack-settings-web
+npm install @ctrine/webpack-settings-web-app
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ npm install ctrine-webpack-settings-web
 The settings can be used directly in your `webpack.config.js` like so:
 
 ```Javascript
-module.exports = require('ctrine-webpack-settings-web').default
+module.exports = require('@ctrine/webpack-settings-web-app').default
 ```
 
 ### Babel preset (Optional)
@@ -28,7 +28,7 @@ available for babel. Add it to the `.babelrc` like so:
 
 ```json
 {
-  "presets": ["ctrine-web"]
+  "presets": [ "@ctrine/web-app" ]
 }
 ```
 
@@ -39,7 +39,7 @@ code style is also included. Add it to the `.eslintrc.json` like so:
 
 ```json
 {
-  "extends": "ctrine-js-web",
+  "extends": "@ctrine/web-app",
   "parser": "Babel-ESLint"
 }
 ```

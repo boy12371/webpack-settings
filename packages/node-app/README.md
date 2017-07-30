@@ -3,7 +3,7 @@ Common Webpack settings for node apps.
 ## Installation
 
 ```shell
-npm install ctrine-webpack-settings-node
+npm install @ctrine/webpack-settings-node-app
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ npm install ctrine-webpack-settings-node
 The settings can be used directly in your `webpack.config.js` like so:
 
 ```Javascript
-module.exports = require('ctrine-webpack-settings-node').default
+module.exports = require('@ctrine/webpack-settings-node-app').default
 ```
 
 ### Babel preset (Optional)
@@ -24,7 +24,7 @@ available for babel. Add it to the `.babelrc` like so:
 
 ```json
 {
-  "presets": ["ctrine-node"]
+  "presets": [ "@ctrine/node-app" ]
 }
 ```
 
@@ -35,7 +35,7 @@ code style is also included. Add it to the `.eslintrc.json` like so:
 
 ```json
 {
-  "extends": "ctrine-js-node",
+  "extends": "@ctrine/node-app",
   "parser": "Babel-ESLint"
 }
 ```
