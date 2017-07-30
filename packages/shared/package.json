@@ -16,9 +16,10 @@
   },
   "homepage": "http://www.ctrine.com/#/webpack-settings",
   "keywords": [
+    "common",
     "ctrine",
-    "shared",
     "settings",
+    "shared",
     "webpack"
   ],
   "author": {
