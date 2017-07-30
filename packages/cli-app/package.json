@@ -1,6 +1,6 @@
 {
   "name": "@ctrine/webpack-settings-cli-app",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Common Webpack settings for building NodeJS CLI apps.",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "@ctrine/babel-preset-node-app": "^3.0.0",
-    "@ctrine/webpack-settings-node-app": "^6.0.0"
+    "@ctrine/webpack-settings-node-app": "^6.0.1"
   }
 }
