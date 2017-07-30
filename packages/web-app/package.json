@@ -1,7 +1,7 @@
 {
-  "name": "ctrine-webpack-settings-node",
-  "version": "5.2.2",
-  "description": "Common Webpack settings for building node apps.",
+  "name": "@ctrine/webpack-settings-web-app",
+  "version": "6.0.0",
+  "description": "Common Webpack settings for building web apps.",
   "license": "Apache-2.0",
   "main": "build",
   "repository": {
@@ -14,8 +14,8 @@
   "homepage": "http://www.ctrine.com/#/webpack-settings",
   "keywords": [
     "ctrine",
-    "node",
     "settings",
+    "web",
     "webpack"
   ],
   "author": {
@@ -24,7 +24,11 @@
     "url": "http://www.borela.tech"
   },
   "dependencies": {
-    "babel-preset-ctrine-node": "^1.4.4",
-    "ctrine-webpack-settings-shared": "^5.2.0"
+    "@ctrine/babel-preset-web-app": "^3.0.0",
+    "@ctrine/webpack-settings-shared": "^6.0.0"
+  },
+  "peerDependency": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   }
 }
