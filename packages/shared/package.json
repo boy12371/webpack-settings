@@ -1,6 +1,6 @@
 {
   "name": "@ctrine/webpack-settings-shared",
-  "version": "6.0.0",
+  "version": "6.0.2",
   "description": "Common Webpack settings.",
   "license": "Apache-2.0",
   "publishConfig": {
