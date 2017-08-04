@@ -10,4 +10,4 @@
 // License for the specific language governing permissions and limitations under
 // the License.
 
-module.exports = require('ctrine-webpack-settings-web').default
+module.exports = require('@ctrine/webpack-settings-web-app').default
