@@ -27,11 +27,11 @@
     "url": "http://www.borela.tech"
   },
   "dependencies": {
-    "@ctrine/babel-preset-web-app": "^3.0.0",
+    "@ctrine/babel-preset-web-app": "^3.1.1",
     "@ctrine/webpack-settings-shared": "^6.0.2"
   },
   "peerDependency": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react": "^15.6.1|^16.0.0",
+    "react-dom": "^15.6.1|^16.0.0"
   }
 }

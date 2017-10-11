@@ -27,7 +27,7 @@
     "url": "http://www.borela.tech"
   },
   "dependencies": {
-    "@ctrine/babel-preset-node-app": "^3.0.0",
+    "@ctrine/babel-preset-node-app": "^3.1.1",
     "@ctrine/webpack-settings-node-app": "^6.0.3"
   }
 }
